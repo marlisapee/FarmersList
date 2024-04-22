@@ -12,6 +12,7 @@ class Cart {
   removeProduct(i) {
     const product = this.products.splice(i, 1);
     this.total -= product[0].price;
+    return this.products;
   }
 
   getTotal() {
@@ -21,6 +22,15 @@ class Cart {
   clear() {
     this.total = 0;
     this.products = [];
+  }
+
+  removeItemByName(name) {
+    const index = this.products.findIndex((product) => product.name === name);
+    if (index !== -1) {
+      const product = this.products.splice(index, 1)[0];
+      this.total -= product.price;
+      return this.total;
+    }
   }
 }
 

@@ -68,6 +68,23 @@ describe('Cart Tests', () => {
     expect(myCart.products.length).toEqual(2);
     expect(myCart.total).toEqual(8);
   });
+
+  test('Can remove products from array with removeItemByName and total is updated', () => {
+    const strawberries = new Product(
+      'Strawberries',
+      5,
+      'The freshest fresas on the market'
+    );
+    const carrots = new Product('Carrots', 2, 'Perfect for an afternoon snack');
+    const mangos = new Product('Mangos', 3, 'The tastiest fruit you can buy');
+    const myCart = new Cart();
+    myCart.addProduct(carrots);
+    myCart.addProduct(mangos);
+    myCart.addProduct(strawberries);
+    myCart.removeItemByName('Strawberries');
+    expect(myCart.products.length).toEqual(2);
+    expect(myCart.total).toEqual(5);
+  });
 });
 
 describe('Customer Tests', () => {
